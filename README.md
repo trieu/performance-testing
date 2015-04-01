@@ -1,6 +1,8 @@
 # performance-testing
 The code for my personal performance testing
 
+![alt tag](https://raw.githubusercontent.com/trieu/performance-testing/master/benchmark-rfx-nodejs.png)
+
 ## requirements
 * sudo apt-get install apache2-utils
 * Using Apache Bench: http://www.petefreitag.com/item/689.cfm
