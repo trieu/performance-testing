@@ -1,9 +1,14 @@
 # performance-testing
 The code for my personal performance testing
 
+## Code
+
+* RFX-tracking with Java 8 (JDK8u40): main HTTP handler at rfx-track/src/main/java/rfx/track/heatmap/HttpLogHandler.java
+* Express.js with Node (v0.10.38): main HTTP handler at nodejs/app.js
+
 ![alt tag](https://raw.githubusercontent.com/trieu/performance-testing/master/benchmark-rfx-nodejs.png)
 
-## requirements
+## Requirements
 * sudo apt-get install apache2-utils
 * Using Apache Bench: http://www.petefreitag.com/item/689.cfm
 
