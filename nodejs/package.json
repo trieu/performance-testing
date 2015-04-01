@@ -1,0 +1,41 @@
+{
+    "name": "rfx-report",
+    "version" : "0.0.1",
+    "private" : "true",
+    "author": "@tantrieuf31",
+    "description": "Reactive Marketing Report",
+    "main": "app.js",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/mc2ads/rfx/tree/master/rfx-report"
+    },
+    "keywords": [
+        "reactive marketing"
+    ],
+    "dependencies": {
+        "express": "~4.12.3",
+        "body-parser": "*",
+        "cookie-parser": "*",        
+        "serve-favicon": "*",
+        "debug": "*",
+        "express-handlebars": "*",
+        "compression" : "*",
+        "serve-static" : "*",
+        "request": "*",
+
+        "mkdirp": "*",
+        "fibrous": "*",
+        "underscore": "*",
+        "js-yaml": "*",
+        "mongoose": "~4.0.1",
+        "mongodb": "~2.0.25",
+        "redback": "*",
+        "node-cache": "*",
+        "rx": "*",
+        "mem-shm" : "*",
+        "redis" : "*"
+    },
+    "engine": {
+        "node": ">=0.8"
+    }
+}

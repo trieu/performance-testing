@@ -1,0 +1,88 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.8
+
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile (   		 	
+    		'io.netty:netty-all:4.0.26.Final'    		
+			,'io.vertx:vertx-core:2.1.5'
+    		,'com.typesafe.akka:akka-actor_2.10:2.3.8'
+    		,'com.google.code.gson:gson:2.3'    		
+    		,'log4j:log4j:1.2.17'    	
+    		,'org.jsoup:jsoup:1.8.1'    		
+    		,'org.apache.commons:commons-lang3:3.3.2'
+    		,'commons-net:commons-net:3.3'    		
+    		,'redis.clients:jedis:2.6.2'
+    		,'org.apache.httpcomponents:httpclient:4.3.6'
+
+    		, fileTree(dir: 'lib', include: '**/*.jar')    		
+    		,'org.apache.kafka:kafka_2.10:0.8.1.1'
+    		,'com.google.guava:guava:18.0'
+    		,'org.databene:contiperf:2.3.4'
+    		
+    		)
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}
+
+task listJars << {
+    configurations.compile.each { File file -> println file.name }
+}
+
+task printClasspathStringJars << {   
+    println getClasspathStringJars()
+}
+
+def getClasspathStringJars() {
+	def baseFolder = 'deps/'
+    def fileNames = []
+    configurations.compile.each { File file -> fileNames.add(baseFolder + file.name) }
+    
+    def classpath = fileNames.join(" ; ")    
+    return '. ; ' + classpath + ' ; '
+}
+
+
+// copy libs
+task rfxCopyRuntimeLibs(type: Copy) {  
+  into "build/libs/deps"  
+  from configurations.compile  
+}
+
+// copy config
+task rfxCopyConfigs(type: Copy) {  
+  into "build/libs/configs"  
+  from files('configs')
+}
+
+
+task jarTrackHttpServer(type: Jar) {	
+	dependsOn classes   
+    from(sourceSets.main.output) {
+        include "**"
+    }
+    version = '1.0'
+    baseName = 'log-http-server'
+    manifest {
+   		attributes ('Implementation-Title': 'TrackHttpServer', 
+        			'Implementation-Version': version ,
+        			'Main-Class': 'rfx.track.heatmap.TrackHttpServerStarter',
+        			'Class-Path' : getClasspathStringJars() 
+        			)
+	}
+}

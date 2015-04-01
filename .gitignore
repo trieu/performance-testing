@@ -4,9 +4,23 @@
 .mtj.tmp/
 
 # Package Files #
-*.jar
 *.war
 *.ear
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+# Runtime and IDE folders #
+**/bin/*
+**/build/*
+**/data/*
+**/log/*
+**/.gradle/*
+**/.settings/*
+**/.idea/*
+**/releases/*
+**/node_modules/*
+**/contiperf-report/*
+
+# Test data
+*.tsv
