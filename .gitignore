@@ -21,6 +21,7 @@ hs_err_pid*
 **/releases/*
 **/node_modules/*
 **/contiperf-report/*
+**/ebin/*
 
 # Test data
 *.tsv
